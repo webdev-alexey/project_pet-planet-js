@@ -1,0 +1,185 @@
+@use "../variables" as *;
+@use "../media" as *;
+
+.hero {
+  padding: 218px 0 245px;
+  color: $light;
+  background-color: $purple;
+  background-image: url("/img/bg-dog.png"), url("/img/pattern.svg");
+  background-image: image-set(
+      url("/img/bg-dog.avif") type("image/avif") 1x,
+      url("/img/bg-dog@2x.avif") type("image/avif") 2x,
+      url("/img/bg-dog.webp") type("image/webp") 1x,
+      url("/img/bg-dog@2x.webp") type("image/webp") 2x,
+      url("/img/bg-dog.png") type("image/png") 1x,
+      url("/img/bg-dog@2x.png") type("image/png") 2x
+    ),
+    url("/img/pattern.svg");
+  background-size: contain, auto;
+  background-position: right bottom, center;
+  background-repeat: no-repeat, repeat;
+
+  @include lg {
+    background-image: url("/img/bg-dog-lg.png"), url("/img/pattern.svg");
+    background-image: image-set(
+        url("/img/bg-dog-lg.avif") type("image/avif") 1x,
+        url("/img/bg-dog-lg@2x.avif") type("image/avif") 2x,
+        url("/img/bg-dog-lg.webp") type("image/webp") 1x,
+        url("/img/bg-dog-lg@2x.webp") type("image/webp") 2x,
+        url("/img/bg-dog-lg.png") type("image/png") 1x,
+        url("/img/bg-dog-lg@2x.png") type("image/png") 2x
+      ),
+      url("/img/pattern.svg");
+    background-position: left 48vw bottom 0, center;
+    background-size: 1850px, auto;
+  }
+
+  @include laptop {
+    padding: 148px 0 172px;
+    background-image: url("/img/bg-dog-laptop.png"), url("/img/pattern.svg");
+    background-image: image-set(
+        url("/img/bg-dog-laptop.avif") type("image/avif") 1x,
+        url("/img/bg-dog-laptop@2x.avif") type("image/avif") 2x,
+        url("/img/bg-dog-laptop.webp") type("image/webp") 1x,
+        url("/img/bg-dog-laptop@2x.webp") type("image/webp") 2x,
+        url("/img/bg-dog-laptop.png") type("image/png") 1x,
+        url("/img/bg-dog-laptop@2x.png") type("image/png") 2x
+      ),
+      url("/img/pattern.svg");
+  }
+
+  @include tablet {
+    padding: 148px 0 461px;
+    background-size: 655px 544px, cover;
+    background-image: url("/img/bg-dog-tablet.png"), url("/img/pattern.svg");
+    background-image: image-set(
+        url("/img/bg-dog-tablet.avif") type("image/avif") 1x,
+        url("/img/bg-dog-tablet@2x.avif") type("image/avif") 2x,
+        url("/img/bg-dog-tablet.webp") type("image/webp") 1x,
+        url("/img/bg-dog-tablet@2x.webp") type("image/webp") 2x,
+        url("/img/bg-dog-tablet.png") type("image/png") 1x,
+        url("/img/bg-dog-tablet@2x.png") type("image/png") 2x
+      ),
+      url("/img/pattern.svg");
+  }
+
+  @include mobile {
+    padding: 100px 0 284px;
+    background-size: 294px 261px, cover;
+    background-image: url("/img/bg-dog-mobile.png"), url("/img/pattern.svg");
+    background-image: image-set(
+        url("/img/bg-dog-mobile.avif") type("image/avif") 1x,
+        url("/img/bg-dog-mobile@2x.avif") type("image/avif") 2x,
+        url("/img/bg-dog-mobile.webp") type("image/webp") 1x,
+        url("/img/bg-dog-mobile@2x.webp") type("image/webp") 2x,
+        url("/img/bg-dog-mobile.png") type("image/png") 1x,
+        url("/img/bg-dog-mobile@2x.png") type("image/png") 2x
+      ),
+      url("/img/pattern.svg");
+  }
+
+  &_store {
+    background-color: $green;
+    background-image: url("/img/bg-cat.png"), url("/img/pattern.svg");
+    background-image: image-set(
+        url("/img/bg-cat.avif") type("image/avif") 1x,
+        url("/img/bg-cat@2x.avif") type("image/avif") 2x,
+        url("/img/bg-cat.webp") type("image/webp") 1x,
+        url("/img/bg-cat@2x.webp") type("image/webp") 2x,
+        url("/img/bg-cat.png") type("image/png") 1x,
+        url("/img/bg-cat@2x.png") type("image/png") 2x
+      ),
+      url("/img/pattern.svg");
+    background-size: 830px, auto;
+
+    @include laptop {
+      background-size: 639px, cover;
+    }
+
+    @include tablet {
+      background-size: 100%, cover;
+    }
+  }
+
+  &__title {
+    width: 810px;
+    max-width: 100%;
+    margin-bottom: 50px;
+
+    @media (max-width: 1300px) {
+      width: 660px;
+    }
+
+    @include laptop {
+      width: 588px;
+      margin-bottom: 32px;
+    }
+
+    @include mobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__text {
+    max-width: 440px;
+    margin-bottom: 60px;
+
+    @include lg {
+      max-width: 540px;
+    }
+
+    @include laptop {
+      max-width: 360px;
+      margin-bottom: 40px;
+    }
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__store-link {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 40px;
+    padding: 16px 24px;
+    background-color: $green;
+    font-weight: 700;
+    text-align: center;
+    color: $light;
+    outline: 1px solid transparent;
+    transition-property: background-color, transform;
+    transition-duration: 0.3s, 0.2s;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      background-color: #00772f;
+    }
+
+    &:focus-visible {
+      outline: 1px solid $carrot;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 16px;
+      background: url("/img/arrow-up.svg") no-repeat center/contain;
+    }
+
+    @include laptop {
+      padding: 16px 36px;
+    }
+
+    @include mobile {
+      padding: 11px 24px;
+    }
+  }
+}

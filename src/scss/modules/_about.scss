@@ -1,0 +1,101 @@
+@use "../media" as *;
+
+.about {
+  padding: 120px 0 278px;
+
+  @include laptop {
+    padding: 100px 0 255px;
+  }
+
+  @include tablet {
+    padding: 100px 0 181px;
+  }
+
+  @include mobile {
+    padding: 80px 0 122px;
+  }
+
+  &__title {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 32px;
+
+    @include laptop {
+      font-size: 44px;
+      margin-bottom: 18px;
+    }
+
+    @include mobile {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      transform: translateY(-18px);
+      flex-basis: 50%;
+      height: 496px;
+      background-image: url("/img/cat.png");
+      background-image: image-set(
+        url("/img/cat.avif") type("image/avif") 1x,
+        url("/img/cat@2x.avif") type("image/avif") 2x,
+        url("/img/cat.webp") type("image/webp") 1x,
+        url("/img/cat@2x.webp") type("image/webp") 2x,
+        url("/img/cat.png") type("image/png") 1x,
+        url("/img/cat@2x.png") type("image/png") 2x
+      );
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include laptop {
+        transform: translateY(-14px);
+        height: 319px;
+      }
+
+      @include tablet {
+        transform: translateY(0);
+        flex-basis: 319px;
+        height: auto;
+        width: 408px;
+        max-width: 100%;
+      }
+
+      @include mobile {
+        flex-basis: 256px;
+        height: 191px;
+      }
+    }
+  }
+
+  &__content {
+    padding: 10px 24px;
+    flex-basis: 50%;
+
+    @include tablet {
+      padding: 10px 0;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
