@@ -51,6 +51,8 @@
     display: block;
     width: 28px;
     height: 28px;
+
+    line-height: 1;
   }
 
   &__cart-cnt {
@@ -58,7 +60,6 @@
     z-index: 2;
     font-weight: 700;
     font-size: 12px;
-    line-height: 1;
     color: $light;
   }
 

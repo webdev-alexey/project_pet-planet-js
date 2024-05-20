@@ -1,0 +1,20 @@
+@use "../variables" as *;
+@use "../media" as *;
+
+.modal {
+  background-color: $white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80vw;
+  max-width: 600px;
+  box-shadow: 0 6px 18px rgba(black, 0.3);
+
+  &__content {
+  }
+
+  &__title {
+  }
+
+  &__cart-items {
+  }
+}
