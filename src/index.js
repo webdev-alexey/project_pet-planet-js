@@ -1,9 +1,10 @@
-// const API_URL = "https://arrow-solid-water.glitch.me";
-const API_URL = "https://stormy-twisty-snowflake.glitch.me";
+const API_URL = "https://arrow-solid-water.glitch.me";
 
 const buttons = document.querySelectorAll(".store__category-button");
 const productList = document.querySelector(".store__list");
 const cartButton = document.querySelector(".store__cart-button");
+const cartCount = cartButton.querySelector(".store__cart-cnt");
+
 const modalOverlay = document.querySelector(".modal-overlay");
 const cartItemsList = document.querySelector(".modal__cart-items");
 const modalCloseButton = document.querySelector(".modal-overlay__close-button");
@@ -60,7 +61,7 @@ const fetchProductByCategory = async (category) => {
 };
 
 const changeCategory = ({ target }) => {
-  const category = target.textContent;
+  const category = target.textContent.trim();
 
   buttons.forEach((button) => {
     button.classList.remove("store__category-button_active");
@@ -74,13 +75,24 @@ buttons.forEach((button) => {
   button.addEventListener("click", changeCategory);
 
   if (button.classList.contains("store__category-button_active")) {
-    fetchProductByCategory(button.textContent);
+    fetchProductByCategory(button.textContent.trim());
   }
-  // fetchProductByCategory("Домики");
 });
+
+const renderCartItems = () => {
+  cartItemsList.textContent = "";
+  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+  cartItems.forEach((item) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = item;
+    cartItemsList.append(listItem);
+  });
+};
 
 cartButton.addEventListener("click", () => {
   modalOverlay.style.display = "flex";
+  renderCartItems();
 });
 
 modalOverlay.addEventListener("click", ({ target }) => {
@@ -89,5 +101,28 @@ modalOverlay.addEventListener("click", ({ target }) => {
     target.closest(".modal-overlay__close-button")
   ) {
     modalOverlay.style.display = "none";
+  }
+});
+
+const updateCartCount = () => {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+  cartCount.textContent = cartItems.length;
+};
+
+updateCartCount();
+
+const addToCart = (productName) => {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+  cartItems.push(productName);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  updateCartCount();
+};
+
+productList.addEventListener("click", ({ target }) => {
+  if (target.closest(".product__btn-add-cart")) {
+    const productCard = target.closest(".store__product");
+    const productName =
+      productCard.querySelector(".product__title").textContent;
+    addToCart(productName);
   }
 });
