@@ -9,7 +9,7 @@ const modalOverlay = document.querySelector(".modal-overlay");
 const cartItemsList = document.querySelector(".modal__cart-items");
 const modalCloseButton = document.querySelector(".modal-overlay__close-button");
 
-const createProductCard = ({ photoUrl, name, price }) => {
+const createProductCard = ({ id, photoUrl, name, price }) => {
   const productCard = document.createElement("li");
   productCard.classList.add("store__item");
   productCard.innerHTML = `
@@ -26,7 +26,7 @@ const createProductCard = ({ photoUrl, name, price }) => {
 
       <p class="product__price">${price}&nbsp;₽</p>
 
-      <button class="product__btn-add-cart">Заказать</button>
+      <button class="product__btn-add-cart" data-id="${id}">Заказать</button>
     </article>
   `;
 
@@ -80,13 +80,13 @@ buttons.forEach((button) => {
 });
 
 const renderCartItems = () => {
-  cartItemsList.textContent = "";
+  // cartItemsList.textContent = "";
   const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
   cartItems.forEach((item) => {
     const listItem = document.createElement("li");
     listItem.textContent = item;
-    cartItemsList.append(listItem);
+    // cartItemsList.append(listItem);
   });
 };
 
@@ -120,9 +120,7 @@ const addToCart = (productName) => {
 
 productList.addEventListener("click", ({ target }) => {
   if (target.closest(".product__btn-add-cart")) {
-    const productCard = target.closest(".store__product");
-    const productName =
-      productCard.querySelector(".product__title").textContent;
-    addToCart(productName);
+    const productId = parseInt(target.dataset.id, 10);
+    addToCart(productId);
   }
 });

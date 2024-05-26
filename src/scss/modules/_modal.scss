@@ -2,19 +2,142 @@
 @use "../media" as *;
 
 .modal {
+  margin: auto;
   background-color: $white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80vw;
-  max-width: 600px;
-  box-shadow: 0 6px 18px rgba(black, 0.3);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 676px;
+  min-height: 459px;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 48%;
+    background-image: url("/img/cart-dog.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 
   &__content {
+    width: 52%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__title {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 16px;
   }
 
   &__cart-items {
+    flex-grow: 1;
+    margin-bottom: 24px;
+  }
+
+  &__cart-item {
+    display: grid;
+    grid-template-areas:
+      "image title title"
+      "image count price";
+    grid-template-columns: 54px 1fr max-content;
+    gap: 8px 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(#2e3514, 0.04);
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  &__cart-item-image {
+    grid-area: image;
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    object-position: center;
+    align-self: center;
+  }
+
+  &__cart-item-title {
+    grid-area: title;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__cart-item-count {
+    grid-area: count;
+    max-width: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  &__btn {
+    border: 1px solid $green;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+  }
+
+  &__count {
+  }
+
+  &__cart-item-price {
+    grid-area: price;
+    font-size: 16px;
+  }
+
+  &__cart-form {
+  }
+
+  &__cart-fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-bottom: 16px;
+  }
+
+  &__cart-legend {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  &__radio {
+    font-size: 16px;
+    display: block;
+  }
+
+  &__cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__cart-button {
+    border-radius: 40px;
+    padding: 12px 24px;
+    background-color: $purple;
+    font-weight: 700;
+    font-size: 16px;
+    color: $light;
+  }
+
+  &__cart-price {
+    font-weight: 700;
+    font-size: 16px;
+    color: $purple;
   }
 }
