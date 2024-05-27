@@ -10,11 +10,23 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
+
+    @include mobile {
+      flex-wrap: wrap;
+      justify-content: end;
+      gap: 30px;
+    }
   }
 
   &__categories {
     display: flex;
     gap: 28px;
+    overflow-x: auto;
+
+    @include mobile {
+      gap: 16px;
+      flex-grow: 1;
+    }
   }
 
   &__category-item {
@@ -51,8 +63,6 @@
     display: block;
     width: 28px;
     height: 28px;
-
-    line-height: 1;
   }
 
   &__cart-cnt {
@@ -60,7 +70,12 @@
     z-index: 2;
     font-weight: 700;
     font-size: 12px;
+    line-height: 1;
     color: $light;
+
+    @include lg {
+      vertical-align: middle;
+    }
   }
 
   &__cart-icon {
@@ -89,6 +104,7 @@
 
   &__item {
     display: flex;
+    justify-self: center;
   }
 
   &__product {

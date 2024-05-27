@@ -82,7 +82,10 @@
               </li>
             </ul>
 
-            <button class="store__cart-button">
+            <button
+              class="store__cart-button"
+              aria-label="кнопка открывает корзину"
+            >
               <span class="store__cart-cnt">0</span>
               <svg
                 class="store__cart-icon"
@@ -217,43 +220,7 @@
       <div class="modal">
         <div class="modal__content">
           <h2 class="modal__title">Корзина</h2>
-          <ul class="modal__cart-items">
-            <li class="modal__cart-item">
-              <img
-                class="modal__cart-item-image"
-                src="img/product/6.jpg"
-                alt=""
-              />
-
-              <h3 class="modal__cart-item-title">Домик-конус для питомцев</h3>
-
-              <div class="modal__cart-item-count">
-                <button class="modal__btn modal__minus">-</button>
-                <span class="modal__count">1</span>
-                <button class="modal__btn modal__plus">+</button>
-              </div>
-
-              <p class="modal__cart-item-price">5700&nbsp;₽</p>
-            </li>
-
-            <li class="modal__cart-item">
-              <img
-                class="modal__cart-item-image"
-                src="img/product/2.jpg"
-                alt=""
-              />
-
-              <h3 class="modal__cart-item-title">Домик со съемной крышей</h3>
-
-              <div class="modal__cart-item-count">
-                <button class="modal__btn modal__minus">-</button>
-                <span class="modal__count">1</span>
-                <button class="modal__btn modal__plus">+</button>
-              </div>
-
-              <p class="modal__cart-item-price">7200&nbsp;₽</p>
-            </li>
-          </ul>
+          <ul class="modal__cart-items"></ul>
 
           <form class="modal__cart-form">
             <fieldset class="modal__cart-fieldset">
